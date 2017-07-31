@@ -1,6 +1,7 @@
 package ch22
 
 import scala.collection.mutable.ListBuffer
+import scala.annotation.tailrec
 
 sealed abstract class RList[+T] {
 
@@ -12,7 +13,7 @@ sealed abstract class RList[+T] {
     if (isEmpty) 0
     else 1 + tail.length
 
-  def drop(n: Int): RList[T] =
+  @tailrec def drop(n: Int): RList[T] =
     if (isEmpty) End
     else if (n <= 0) this
     else tail.drop(n - 1)
