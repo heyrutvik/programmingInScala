@@ -11,10 +11,14 @@ package ch19
  * 		-> apply method for creating Queue type
  */
 
-trait Queue[T] {
+/*
+ *	S    -> T
+ * 	Q[S] -> Q[T]
+ */
+trait Queue[+T] {
   def head: T
   def tail: Queue[T]
-  def enqueue(x: T): Queue[T]
+  def enqueue[U >: T](x: U): Queue[U]
 }
 
 object Queue {
@@ -39,6 +43,6 @@ object Queue {
       new QueueImpl(q.leading.tail, q.trailing)
     }
 
-    def enqueue(x: T) = new QueueImpl(leading, x :: trailing)
+    def enqueue[U >: T](x: U): QueueImpl[U] = new QueueImpl(leading, x :: trailing)
   }
 }
