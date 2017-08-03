@@ -22,6 +22,8 @@ class Rational(n: Int, d: Int) {
     case _ => false
   }
 
+  override val hashCode = (numer, denom).##
+
   def +(that: Rational): Rational = {
     new Rational(
       numer * that.denom + denom * that.numer,
