@@ -21,7 +21,7 @@ package ch30
  *      - modify equals of Point to check run-time type and remove general case of sub-type (ColoredPoint3)
  *    solution in ColoredPoint4
  */
-class ColoredPoint3(x: Int, y: Int, val color: Color.Value) extends Point1(x, y) {
+class ColoredPoint3(x: Int, y: Int, val color: Color.Value) extends Point2(x, y) {
 
   override def equals(other: Any) = other match {
     case that: ColoredPoint3 => color == that.color && super.equals(that)
@@ -32,7 +32,7 @@ class ColoredPoint3(x: Int, y: Int, val color: Color.Value) extends Point1(x, y)
 object ColoredPoint3 {
 
   def apply() = {
-    val p = new Point1(1, 2)
+    val p = new Point2(1, 2)
     val cp = new ColoredPoint3(1, 2, Color.Violet)
     val redp = new ColoredPoint3(1, 2, Color.Red)
     val bluep = new ColoredPoint3(1, 2, Color.Blue)
@@ -49,7 +49,7 @@ object ColoredPoint3 {
     println
 
     println("now, strict approch for transitive property won't work for Anon class object")
-    val pAnon = new Point1(1, 1) { override val y = 2 }
+    val pAnon = new Point2(1, 1) { override val y = 2 }
     println("p == pAnon <=> " + (p == pAnon))
     println("--------------------------------------------------------------------------------")
 

@@ -25,7 +25,7 @@ package ch30
  *      - check ColoredPoint4
  */
 
-class ColoredPoint4(x: Int, y: Int, val color: Color.Value) extends Point2(x, y) {
+class ColoredPoint4(x: Int, y: Int, val color: Color.Value) extends Point3(x, y) {
 
   override def equals(other: Any) = other match {
     case that: ColoredPoint4 => (that canEquals this) && color == that.color && super.equals(that)
@@ -38,7 +38,7 @@ class ColoredPoint4(x: Int, y: Int, val color: Color.Value) extends Point2(x, y)
 object ColoredPoint4 {
 
   def apply() = {
-    val p = new Point2(1, 2)
+    val p = new Point3(1, 2)
     val cp = new ColoredPoint4(1, 2, Color.Violet)
     val redp = new ColoredPoint4(1, 2, Color.Red)
     val bluep = new ColoredPoint4(1, 2, Color.Blue)
@@ -56,7 +56,7 @@ object ColoredPoint4 {
 
     println("now, Anon class object works beacuse canEqual inherit from Point")
 
-    val pAnon = new Point2(1, 1) { override val y = 2 }
+    val pAnon = new Point3(1, 1) { override val y = 2 }
     val coll = List(p)
     println("coll contains p <=> " + (coll contains p))
     println("coll contains bluep <=> " + (coll contains bluep))

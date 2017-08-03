@@ -12,6 +12,16 @@ class Rational(n: Int, d: Int) {
 
   override def toString = s"$numer / $denom"
 
+  def canEqual(other: Any): Boolean = other.isInstanceOf[Rational]
+
+  override def equals(other: Any): Boolean = other match {
+    case that: Rational =>
+      (that canEqual this) &&
+        numer == that.numer &&
+        denom == that.denom
+    case _ => false
+  }
+
   def +(that: Rational): Rational = {
     new Rational(
       numer * that.denom + denom * that.numer,
