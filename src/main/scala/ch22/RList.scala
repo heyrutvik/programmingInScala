@@ -26,7 +26,7 @@ sealed abstract class RList[+T] {
 
   def :::[U >: T](prefix: RList[U]): RList[U] =
     if (prefix.isEmpty) this
-    else prefix.head :: prefix.tail ::: this
+    else prefix.head :: (prefix.tail ::: this)
 }
 
 case object End extends RList[Nothing] {

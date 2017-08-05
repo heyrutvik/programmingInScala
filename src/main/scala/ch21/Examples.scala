@@ -19,4 +19,16 @@ object Examples {
   button.addActionListener {
     _ => println("Oops!")
   }
+
+  // context bounds
+  def maxList[T: Ordering](elements: List[T]): T = {
+    elements match {
+      case Nil      => throw new IllegalArgumentException("empty list!")
+      case x :: Nil => x
+      case x :: xs =>
+        val maxRest = maxList(xs)
+        if (implicitly[Ordering[T]].gt(x, maxRest)) x
+        else maxRest
+    }
+  }
 }
