@@ -1,8 +1,8 @@
 package ch29
 
 object GoApple {
-  def apply(dbName: Option[String] = None) = {
-    val db: Database = dbName match {
+  def apply(dbName: String) = {
+    val db: Database = Option(dbName) match {
       case Some("student") => StudentDatabase
       case _ => SimpleDatabase
     }
