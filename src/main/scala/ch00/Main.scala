@@ -1,10 +1,7 @@
 package ch00
 
-import ch15.Express
+import ch23.NQueensProblem
 
-object Main {
-
-  def main(args: Array[String]) {
-    Express.print()
-  }
+object Main extends App {
+  NQueensProblem(2)
 }
