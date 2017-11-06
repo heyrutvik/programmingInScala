@@ -1,4 +1,4 @@
-package src.main.scala.ch06
+package ch06
 
 import scala.annotation.tailrec
 

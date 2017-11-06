@@ -9,7 +9,7 @@ object EMail extends ((String, String) => String) {
   def unapply(s: String) = {
     println(s"EMail.unapply($s)")
     s split "@" match {
-      case Array(u: String, d: String, _*) if ((u.length > 0 && d.length > 0)) =>
+      case Array(u, d, _*) if ((u.length > 0 && d.length > 0)) =>
         Some((u, d))
       case _ => None
     }
