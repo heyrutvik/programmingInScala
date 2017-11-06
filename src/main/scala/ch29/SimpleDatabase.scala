@@ -1,5 +1,17 @@
 package ch29
 
+/*
+
+SimpleDatabase ->
+SimpleRecipe ->
+SimpleFoods ->
+Database ->
+FoodCategories ->
+AnyRef ->
+Any
+
+ */
+
 object SimpleDatabase extends Database with SimpleFoods with SimpleRecipe
 
 trait SimpleFoods {

@@ -1,5 +1,17 @@
 package ch29
 
+/*
+
+StudentDatabase ->
+StudentRecipe ->
+StudentFoods ->
+StudentCategories ->
+Database ->
+FoodCategories ->
+AnyRef ->
+Any
+
+ */
 object StudentDatabase extends Database with StudentCategories with StudentFoods with StudentRecipe
 
 trait StudentFoods {
@@ -16,6 +28,10 @@ trait StudentRecipe { this: StudentFoods =>
   def allRecipes = List(HeatItUp)
 }
 
-trait StudentCategories { this: FoodCategories with StudentFoods =>
+trait StudentCategories extends FoodCategories { this: StudentFoods =>
   def allCategories = List(FoodCategory("edible", List(FrozenFood)))
 }
+
+//trait StudentCategories { this: FoodCategories with StudentFoods =>
+//  def allCategories = List(FoodCategory("edible", List(FrozenFood)))
+//}

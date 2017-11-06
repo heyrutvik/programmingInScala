@@ -7,8 +7,9 @@ object GoApple {
       case _ => SimpleDatabase
     }
     object browser extends Browser {
-      val database = db
+      val database: db.type = db
     }
+    for(category <- db.allCategories) browser.displayCategory(category)
     val apple = db.foodNamed("Apple")
     apple match {
       case Some(a) =>
