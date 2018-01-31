@@ -8,7 +8,7 @@ public class Self {
 
     ScheduledExecutorService s = Executors.newSingleThreadScheduledExecutor();
 
-    public void run(Runnable r) {
+    public void runViaService(Runnable r) {
         Thread me = Thread.currentThread();
         s.schedule(new Runnable() {
             @Override
@@ -19,9 +19,24 @@ public class Self {
         r.run();
     }
 
+    public void runViaCustom(Runnable r) {
+        Thread me = Thread.currentThread();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                    me.interrupt();
+                } catch (InterruptedException e) {}
+            }
+        });
+        t.start();
+        r.run();
+    }
+
     public static void main(String[] args) {
         Self s1 = new Self();
-        s1.run(new Runnable() {
+        s1.runViaCustom(new Runnable() {
             @Override
             public void run() {
                 try {
