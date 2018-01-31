@@ -27,15 +27,30 @@ public class Self {
                 try {
                     Thread.sleep(5000);
                     me.interrupt();
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {}
             }
         });
+        t.setDaemon(true);
         t.start();
         r.run();
     }
 
     public static void main(String[] args) {
         Self s1 = new Self();
+        /*
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    System.out.println("");
+                }
+            }
+        });
+        t.start();
+        */
         s1.runViaCustom(new Runnable() {
             @Override
             public void run() {
