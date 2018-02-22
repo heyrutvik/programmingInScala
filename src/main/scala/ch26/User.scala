@@ -43,6 +43,4 @@ object User {
     *   can throw MatchError is extractor fails
     */
   val check @ IsRutvik() = u.asInstanceOf[FreeUser]
-
-  Seq.empty.collect()
 }
