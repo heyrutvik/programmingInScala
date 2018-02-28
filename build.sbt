@@ -1,6 +1,10 @@
 name := "programmingInScala"
 version := "0.0.1"
-scalaVersion := "2.12.4"
+
+inThisBuild(Seq(
+  scalaOrganization := "org.typelevel",
+  scalaVersion      := "2.12.4-bin-typelevel-4"
+))
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
