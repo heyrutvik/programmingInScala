@@ -5,9 +5,9 @@ import shapeless.{Generic, HNil, Inl, Inr}
 case class Person(name: String, age: Int)
 case class AnyThingElse(name: String, price: Int)
 
-sealed trait Option[+A]
-case class Some[A](value: A) extends Option[A]
-case object None extends Option[Nothing]
+sealed trait Option1[+A]
+case class Some[A](value: A) extends Option1[A]
+case object None extends Option1[Nothing]
 
 object GenericExample extends App {
 
@@ -19,7 +19,7 @@ object GenericExample extends App {
 
   val iceCreamToPerson = genPerson.from(icecreamGeneric)
 
-  val coproductGeneric = Generic[Option[Int]]
+  val coproductGeneric = Generic[Option1[Int]]
   val a = coproductGeneric.to(Some(10))
   val b = coproductGeneric.to(None)
 

@@ -15,3 +15,5 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.6",
   "com.chuusai" %% "shapeless" % "2.3.3"
 )
+
+scalacOptions += "-Yliteral-types"
