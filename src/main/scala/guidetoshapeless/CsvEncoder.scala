@@ -14,6 +14,8 @@ object CsvEncoder {
     func(value)
   }
 
+  def getRepr[A : Generic](value: A) = implicitly[Generic[A]].to(value)
+
   // case class
   implicit val employeeEncoder: CsvEncoder[Employee] = { value =>
     List(value.name, value.number.toString, value.manager.toString)
